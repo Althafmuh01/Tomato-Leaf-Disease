@@ -50,19 +50,18 @@ st.markdown(
     .css-ffhzg2 {
         color: #004d00;
         font-family: 'Arial', sans-serif;
-        font-size: 5vw;  # Ukuran font dinamis berdasarkan lebar layar
     }
     .css-145k2gt {
         color: #006400;
         font-family: 'Georgia', serif;
-        font-size: 7vw;  # Ukuran font dinamis untuk header
+        font-size: 28px;
     }
     .stButton>button {
         background-color: #32CD32;
         color: white;
         border-radius: 10px;
         padding: 12px 24px;
-        font-size: 4vw;  # Ukuran tombol responsif
+        font-size: 18px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: 0.3s;
     }
@@ -74,7 +73,7 @@ st.markdown(
         color: white;
         border-radius: 10px;
         padding: 12px 24px;
-        font-size: 4vw;  # Ukuran tombol responsif
+        font-size: 18px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: 0.3s;
     }
@@ -83,11 +82,9 @@ st.markdown(
     }
     .stTextInput>div>div>input {
         background-color: #d4f1d4;
-        font-size: 4vw;  # Ukuran input responsif
     }
     .stFileUploader>div>div>input {
         background-color: #d4f1d4;
-        font-size: 4vw;  # Ukuran input responsif
     }
     .stImage img {
         max-width: 100% !important;
@@ -96,18 +93,18 @@ st.markdown(
     .green-box {
         background-color: #00712D;
         border: 2px solid #4b9c1f;
-        padding: 10% 5%;
+        padding: 20px;
         border-radius: 10px;
         text-align: center;
     }
     .green-box h1 {
         color: white;
-        font-size: 8vw;  # Ukuran teks responsif
+        font-size: 30px;
         margin: 0;
     }
     .green-box p {
         color: white;
-        font-size: 5vw;  # Ukuran teks responsif
+        font-size: 18px;
     }
     </style>
     """, unsafe_allow_html=True)
