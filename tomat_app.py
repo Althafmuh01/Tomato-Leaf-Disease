@@ -136,6 +136,7 @@ with tab1:
 
 with tab2:
     st.write("Menggunakan kamera untuk deteksi secara langsung.")
+    # Hanya menampilkan input kamera jika tab 2 aktif
     image = st.camera_input("Ambil gambar")
     if image is not None:
         # Lakukan prediksi dan tampilkan hasil
