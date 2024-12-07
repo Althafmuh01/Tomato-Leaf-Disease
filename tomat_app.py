@@ -149,7 +149,7 @@ with tab2:
 
     # Menampilkan input kamera hanya jika kamera diaktifkan
     if st.session_state['camera_active']:
-        image = st.camera_input("Ambil gambar")
+        image = st.camera_input("Tampilan Layar Deteksi")
         if image is not None:
             # Lakukan prediksi dan tampilkan hasil
             image = Image.open(image)
