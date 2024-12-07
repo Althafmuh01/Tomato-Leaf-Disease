@@ -135,59 +135,11 @@ with tab1:
             download_image(result_image, filename)
 
 with tab2:
-    # Pilihan untuk akses kamera
     st.write("Menggunakan kamera untuk deteksi secara langsung.")
-    start_camera = st.checkbox("Mulai Kamera/Ambil Ulang Gambar", key="start_camera_checkbox")
-    
-    # Tempat untuk menampilkan frame kamera
-    FRAME_WINDOW = st.image([])
-
-    # Akses kamera
-    camera = cv2.VideoCapture(0)  # Akses kamera
-
-    # Variabel untuk menyimpan status prediksi real-time
-    capture_requested = False
-    captured_image = None
-
-    if start_camera:
-        # Tangkap gambar jika tombol "Capture" ditekan
-        if st.button("Capture", key="capture_button_outside"):
-            capture_requested = True
-
-        while start_camera:
-            ret, frame = camera.read()
-            if not ret:
-                st.warning("Tidak dapat mengakses kamera.")
-                break
-
-            # Ubah format frame ke RGB dan lakukan prediksi
-            frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            processed_frame, predicted_class = predict_and_annotate(frame_rgb)
-
-            # Tampilkan frame dengan bounding box
-            FRAME_WINDOW.image(processed_frame, use_container_width=True)
-
-            # Tangkap gambar jika tombol "Capture" ditekan
-            if capture_requested:
-                captured_image = frame_rgb  # Simpan frame yang sedang ditampilkan
-                capture_requested = False  # Reset status capture
-                break
-
-        # Setelah checkbox dinonaktifkan, lepaskan kamera
-        if not start_camera:
-            camera.release()
-
-    # Tampilkan hasil gambar yang di-capture dan prediksi
-    if captured_image is not None:
-        st.write("Gambar yang diambil:")
-        st.image(captured_image, caption="Gambar yang diambil", use_container_width=True)
-        
-        # Prediksi ulang pada gambar yang di-capture
-        with st.spinner("Memproses gambar yang diambil..."):
-            result_image, predicted_class = predict_and_annotate(captured_image)
+    image = st.camera_input("Ambil gambar")
+    if image is not None:
+        # Lakukan prediksi dan tampilkan hasil
+        image = Image.open(image)
+        result_image, predicted_class = predict_and_annotate(np.array(image))
         st.image(result_image, caption="Hasil Deteksi", use_container_width=True)
         st.write(f"Hasil Deteksi: {predicted_class}")
-
-        # Nama file berdasarkan kelas prediksi dan waktu
-        filename = f"{predicted_class}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
-        download_image(result_image, filename)
