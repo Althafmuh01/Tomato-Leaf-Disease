@@ -136,11 +136,23 @@ with tab1:
 
 with tab2:
     st.write("Menggunakan kamera untuk deteksi secara langsung.")
-    # Hanya menampilkan input kamera jika tab 2 aktif
-    image = st.camera_input("Ambil gambar")
-    if image is not None:
-        # Lakukan prediksi dan tampilkan hasil
-        image = Image.open(image)
-        result_image, predicted_class = predict_and_annotate(np.array(image))
-        st.image(result_image, caption="Hasil Deteksi", use_container_width=True)
-        st.write(f"Hasil Deteksi: {predicted_class}")
+    
+    # Tombol untuk mengaktifkan dan menonaktifkan kamera
+    if 'camera_active' not in st.session_state:
+        st.session_state['camera_active'] = False  # Awalnya kamera tidak aktif
+    
+    if st.button("Aktifkan Kamera"):
+        st.session_state['camera_active'] = True
+    
+    if st.button("Matikan Kamera"):
+        st.session_state['camera_active'] = False
+
+    # Menampilkan input kamera hanya jika kamera diaktifkan
+    if st.session_state['camera_active']:
+        image = st.camera_input("Ambil gambar")
+        if image is not None:
+            # Lakukan prediksi dan tampilkan hasil
+            image = Image.open(image)
+            result_image, predicted_class = predict_and_annotate(np.array(image))
+            st.image(result_image, caption="Hasil Deteksi", use_container_width=True)
+            st.write(f"Hasil Deteksi: {predicted_class}")
