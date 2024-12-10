@@ -110,7 +110,7 @@ st.markdown(
     """, unsafe_allow_html=True)
 
 # Judul aplikasi dalam kotak hijau dengan teks di tengah
-st.markdown('<div class="green-box"><h1>🌿 Prediksi Kesehatan Daun Tomat 🍅</h1></div>', unsafe_allow_html=True)
+st.markdown('<div class="green-box"><h1> Prediksi Kesehatan Daun Tomat 🌿 </h1></div>', unsafe_allow_html=True)
 st.markdown('<div class="green-box"><p>"Unggah gambar atau gunakan kamera untuk memulai deteksi kesehatan daun tanaman tomat secara langsung. Sistem ini akan memberikan informasi terkait kondisi kesehatan tanaman tomat Anda."</p></div>', unsafe_allow_html=True)
 
 # Tab untuk pilihan input (upload gambar atau akses kamera)
